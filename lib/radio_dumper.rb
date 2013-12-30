@@ -50,5 +50,5 @@ module RadioDumper
   end
 
   # load plugins
-  Dir.glob(File.expand_path("./lib/radio_dumper/plugins") + "/*.rb"){|file| require file}
+  Dir.glob(File.expand_path("radio_dumper/plugins", File.dirname(__FILE__)) + "/*.rb"){|file| require file}
 end
