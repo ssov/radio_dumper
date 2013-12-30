@@ -1,3 +1,21 @@
 #!/usr/bin/env ruby
 
 require 'radio_dumper'
+require 'optparse'
+
+include RadioDumper
+
+options = {}
+opt = OptionParser.new
+opt.on('-p plugin', 'plugin name') {|v| @plugin = v }
+opt.on('-t sec', 'live length') {|v| @time = v }
+opt.on('-d [directory]', 'output directory') {|v| @directory = v }
+opt.on('--channel [channel]', 'channel name') {|v| options[:channel] = v}
+opt.parse!(ARGV)
+
+RadioDumper.configure do |config|
+  config.directory = @directory
+  config.time = @time
+end
+
+RadioDumper.dump(@plugin, options)
