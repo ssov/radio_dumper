@@ -1,6 +1,6 @@
 # RadioDumper
 
-TODO: Write a gem description
+Radio recorder
 
 ## Installation
 
@@ -14,11 +14,17 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install radio_dumper
+    $ rake build
+    $ rake install
 
-## Usage
+## Usage(Example)
 
-TODO: Write usage instructions here
+    $ radio_dumper -p radiko -t 30 -d ~/ --channel TBS
+
+## Dependencies
+
+* rtmpdump
+* swftools
 
 ## Contributing
 
