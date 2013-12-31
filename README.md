@@ -20,6 +20,10 @@ Or install it yourself as:
 ## Usage(Example)
 
     $ radio_dumper -p radiko -t 30 -d ~/ --channel TBS
+    $ radio_dumper -p ag -t 30 -d .
+    $ radio_dumper -p nhk1 -t 3600 -d .
+    $ radio_dumper -p nhk2 -t 1234 -d ~/
+    $ radio_dumper -p nhkfm -t 1800 -d ~/
 
 ## Dependencies
 
