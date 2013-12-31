@@ -31,6 +31,19 @@ module RadioDumper
     def config
       @@config
     end
+
+    def rtmpdump(options, prefix)
+      # http://rtmpdump.mplayerhq.hu/rtmpdump.1.html
+      option = options[:options]
+      options.delete(:options)
+      s = options.map{|k, v| "--#{k} '#{v}'"}.join(" ")
+      `rtmpdump -v \
+        #{s} \
+        #{option} \
+        --live \
+        --stop #{RadioDumper.config.time} \
+        --flv #{RadioDumper.output(prefix)}`
+    end
   end
 
   class Plugin

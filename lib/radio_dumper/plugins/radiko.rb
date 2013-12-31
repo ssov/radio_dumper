@@ -13,15 +13,14 @@ RadioDumper::Plugin.create :radiko do
     authtoken = auth
 
     a, b, c, d = rtmp_url(channel)
-    `rtmpdump -v \
-      -r '#{a}://#{b}' \
-      --app '#{c}' \
-      --playpath '#{d}' \
-      -W '#{PLAYER}' \
-      -C S:'' -C S:'' -C S:'' -C S:#{authtoken} \
-      --live \
-      --stop #{RadioDumper.config.time} \
-      --flv #{RadioDumper.output(channel)}`
+    opts = {
+      :rtmp => "#{a}://#{b}",
+      :app => c,
+      :playpath => d,
+      :swfUrl => PLAYER,
+      :options => "-C S:'' -C S:'' -C S:'' -C S:#{authtoken}"
+    }
+    RadioDumper.rtmpdump(opts, channel)
   end
 
   def rtmp_url(channel)
